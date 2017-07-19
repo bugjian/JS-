@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /* var obj = new Object();
+     obj.val = 5;
+     obj.click = function() {
+     alert( 'hello' );
+     };
+     var obj = {
+     val :5,
+     click: function() {
+     alert( "hello" );
+     }
+     };
+     alert(typeof obj)*/
+
+    //
+    /*function User( name ) {
+     this.name = name;
+     }
+     var me = new User("My Name");
+     var you = new User("You Name");
+     alert(me.constructor === you.constructor);*/
+
+    //
+    /*function User( name, age ) {
+     this.name = name;
+     this.age = age;
+
+     }
+     User.prototype.getName = function() {
+     return this.name;
+     };
+     User.prototype.getAge = function() {
+     return this.age;
+     };
+     var user = new User( 'Bob', 44) ;
+     alert(user.getName());
+     alert(user.getAge());*/
+
+    //私有方法,特权方法提供访问私有变量的公用方法
+    /*function User( name, age ) {
+     var year = (new Date()).getFullYear() - age;
+     this.getYearBorn = function() {
+     return year;
+     }
+     }
+     var user = new User('bob', 44);
+     alert(user.getYearBorn());*/
+
+    //动态生成
+
+    /*function User(properties) {
+        (function (which) {
+            for (var i in properties) {
+                var p = i;
+                which['get' + p] = function () {
+                    return properties[p];
+                };
+                which['set' + p] = function (val) {
+                    properties[p] = val;
+                }
+            }
+        })(this);
+    }
+    var user = new User({
+        name: 'jian',
+        age: '22',
+        sex: 'man'
+    });*/
+
+
+
+    /*function User(properties) {
+        for (var i in properties) {
+            (function(which){
+                var p = i;
+                which['get' + p] = function () {
+                    return properties[p];
+                };
+                which['set' + p] = function (val) {
+                    properties[p] = val;
+                }
+            })(this)
+        }
+    }*/
+    /*var user = new User({
+        name: 'jian',
+        age: '22',
+        sex: 'man'
+    });
+    alert(user.name);
+    alert(user.getname());
+    alert(user.getage());
+*/
+//静态方法
+    User.cloneUser = function( user ) {
+        return new User(
+                user.getName(),
+                user.getAge()
+        );
+    }
+</script>
+</body>
+</html>

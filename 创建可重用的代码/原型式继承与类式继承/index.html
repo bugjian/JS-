@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        function Person( name ) {
+            this.name = name;
+        }
+        Person.prototype.getName = function() {
+            return this.name;
+        };
+        function User( name, password ) {
+            this.name = name;
+            this.password = password;
+        }
+        //继承所有Person的方法
+        User.prototype = new Person();
+        User.prototype.getPassword = function() {
+            return this.password;
+        };
+        var user = new User( 'jian', '1995' );
+        alert(user.getName());
+    </script>
+</body>
+</html>

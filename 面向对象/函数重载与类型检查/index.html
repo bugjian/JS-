@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var num = 1.7;
+        function sendMessage( msg, obj ){
+            if( arguments.length == 2 ){
+                obj.handleMsg( msg );
+            } else {
+                alert(msg);
+            }
+        }
+        sendMessage( 'Hello, World!' );
+        sendMessage( "How are you", {
+            handleMsg: function( msg ) {
+                alert( 'This is a custom message: ' + msg );
+            }
+        });
+        function makeArray () {
+            var arr = [];
+            for( var i = 0; i < arguments.length ; i++) {
+                arr.push( arguments[i] );
+            }
+            return arr;
+        }
+        //
+        //第一种类型检查的方法
+        function displayerror ( msg ){
+            if( typeof msg == 'undefined') {
+                msg = 'An error occurred.';
+            }
+            alert( msg );
+        }
+        if( typeof num == "number"){
+            num = parseInt(num);
+            alert(num);
+        } else {
+            if ( typeof num == "string") {
+                num = num.split(',');
+            }
+        }
+        //第二种 使用构造函数来检查
+        if ( num.constructor == String ){
+            num = parseInt( num );
+        }
+        if ( num.constructor == Array ) {
+            num = num.join(',');
+        }
+        //检测掺入参数类型实列
+        function strict( types, args ) {
+            if( types.length != args.length ) {
+                throw "Invalid number of arguments. Expected " + types.length +
+                ", received" + args.length + " instead.";
+            }
+            for( var i =0; i < args.length ;i++ ) {
+                if( args[i].constructor != types[i] ){
+                    throw "Invalid arguments type. Expected " + types[i].name +
+                    ", received" + args[i].constructor.name + " instead.";
+                }
+            }
+        }
+        function userList (prefix, num, users) {
+            strict( [ String, Number, Array ], arguments );
+            for( var i = 0; i < num; i++ ) {
+                print( prefix + ": " + users[i] );
+            }
+        }
+
+    </script>
+</body>
+</html>

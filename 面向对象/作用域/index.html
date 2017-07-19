@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="button" value="事件" id="main"/>
+    <script>
+        /*var obj = document.getElementById('main');
+        var items = [ "click", "keypress" ];
+        //遍历数组的每一个成员
+        for( var i = 0;i < items.length; i++ ) {
+            (function(){
+                var item = items[i];
+                obj[ "on" + item] = function() {
+                    alert( "Thanks for your " + item );
+                }
+            })();
+        }*/
+
+        //上下文对象
+        /*var obj = {
+            yes: function() {
+                this.val = true;
+            },
+            no: function() {
+                this.val = false;
+            }
+        };
+        obj.yes();
+        window.no = obj.no;
+        no();
+        alert(val);*/
+
+        //修改函数上下文对象
+        function changeColor( color ) {
+            this.style.backgroundColor = color;
+        }
+//        changeColor( "white" );
+        var main = document.getElementById('main');
+        changeColor.call( main, 'blue');
+        function setBodyColor() {
+            changeColor.apply( document.body ,arguments);
+        }
+
+        setBodyColor('black');
+
+    </script>
+</body>
+</html>
