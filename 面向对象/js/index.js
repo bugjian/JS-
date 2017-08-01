@@ -1,26 +1,15 @@
 /**
  * Created by jian on 2017/7/17.
  */
-function Lecture(name, teacher){
-    this.name = name;
-    this.teacher = teacher;
+function find() {
+    var result = {};
+    var serach = location.search;
+    serach = serach.substring(1);
+    serach = serach.split('&');
+    serach.forEach(function(query){
+        query = query.split('=');
+        result[query[0]] = query[1];
+    });
+    return result;
 }
-Lecture.prototype.display = function(){
-    return this.teacher + ' is teaching ' + this.name + '.';
-};
-function Schedule(lectures) {
-    this.lectures = lectures;
-}
-Schedule.prototype.display = function(){
-    var str = '';
-    for(var i = 0;i < this.lectures.length;i++){
-        str += this.lectures[i].display() + ' ';
-    }
-    return str;
-};
-var mySchedule = new Schedule([
-    new Lecture('Gym',"Mr.Smith"),
-    new Lecture("Math","Mrs. Jones"),
-    new Lecture("English","TBD")
-]);
-alert(mySchedule.display());
+alert(JSON.stringify(find()));

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .bd{
+            border: 1px solid silver;
+        }
+        .pd{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function find() {
+        var result = {};
+        var serach = location.search;
+        serach.splice(0,1);
+        alert(serach);
+        Array.prototype.splice.call(serach,0,1);
+        serach.forEach(function(query){
+            query = query.split('=');
+            result[query[0]] = query[1];
+        });
+        return result;
+    }
+    alert(JSON.stringify(find()));
+</script>
+</body>
+</html>
